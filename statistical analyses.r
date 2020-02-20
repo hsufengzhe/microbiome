@@ -3,7 +3,7 @@
 #analyses of microbiome risk scores
 len<-nrow(score)
 aaa[]<-0
-mydata[,aa]<-0
+mydata$taxon<-0
 for (i in 1:len) {
   for (j in 1:1919) {
     qq<-quantile(mydata[,score[i,1]-420],0.05)
@@ -26,7 +26,7 @@ for (i in 1:nrow(score2)) {
 q1<-quantile(mydata[,4],0.5)
 mydata[,4][mydata[,4] <q1]<-0
 mydata[,4][mydata[,4] >=q1]<-1
-res<-glm(dm_c~run+sex0+age_c+bmi_c+alc_c+energy+bristol_scale,data = mydata,family = binomial(link = "logit"))
+res<-glm(dm_c~taxon+sex0+age_c+bmi_c+alc_c+energy+bristol_scale,data = mydata,family = binomial(link = "logit"))
 summary(res)
  
 # analyses of clustering
