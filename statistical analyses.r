@@ -1,8 +1,6 @@
 #R3.5.3
   
 #analyses of microbiome risk scores
- #discovery stage
- 
 len<-nrow(score)
 aaa[]<-0
 mydata[,aa]<-0
@@ -31,29 +29,6 @@ mydata[,4][mydata[,4] >=q1]<-1
 res<-glm(dm_c~run+sex0+age_c+bmi_c+alc_c+energy+bristol_scale,data = mydata,family = binomial(link = "logit"))
 summary(res)
  
- #replication stage
-len<-nrow(score)
-mydata_fh[,aa]<-0
-for (i in 1:len) {
-  qq<-quantile(mydata_fh[,score[i,1]-440],0.05)
-  for (j in 1:217) {
-    if(mydata_fh[j,score[i,1]-440]>qq)
-      mydata_fh[j,4]<-mydata_fh[j,4]+1
-  }
-}
-for (i in 1:nrow(score2)) {
-  for (j in 1:217) {
-    qq<-quantile(mydata_fh[,score[i,1]-440],0.05)
-    if(mydata_fh[j,score[i,1]-440]>qq)
-      mydata_fh[j,4]<-mydata_fh[j,4]-1
-  }
-}
-q1<-quantile(mydata_fh[,4],0.5)
-mydata_fh[,4][mydata_fh[,4] <q1]<-0
-mydata_fh[,4][mydata_fh[,4] >=q1]<-1
-res<-glm(dm_c ~run+sex_v3+age_c+bmi_c+alc_c+energy+bristol_scale,data= mydata_fh,family = binomial(link = "logit"))
-summary(res)
-
 # analyses of clustering
 library(cluster)
 library(clusterSim)
