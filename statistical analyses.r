@@ -42,7 +42,8 @@ pam.res<-pam(df,the_optimum_number)
 fviz_cluster(pam.res,df,repel =T, pointsize =4,labelsize = 20, main = " ",show.clust.cent = F)+labs(title = "Guangzhou Nutrition and Health Study Cohort")+theme(axis.title.x=element_text(size=24),axis.title.y=element_text(size=24),plot.title=element_text(size=24))+theme(legend.text = element_text(size = 18))+theme(legend.title = element_text(size = 18))+ theme(axis.text.x = element_text(size = 18))+ theme(axis.text.y = element_text(size = 18))
 fviz_cluster(pam.res,df,repel =T, pointsize =4,labelsize = 20, main = " ",show.clust.cent = F)+labs(title = "Replication Cohort")+theme(axis.title.x=element_text(size=24),axis.title.y=element_text(size=24),plot.title=element_text(size=24))+theme(legend.text = element_text(size = 18))+theme(legend.title = element_text(size = 18))+ theme(axis.text.x = element_text(size = 18))+ theme(axis.text.y = element_text(size = 18))
 fviz_cluster(pam.res,df,repel =T, pointsize =4,labelsize = 20, main = " ",show.clust.cent = F)+labs(title = "Antibiotic-taking Group")+theme(axis.title.x=element_text(size=24),axis.title.y=element_text(size=24),plot.title=element_text(size=24))+theme(legend.text = element_text(size = 18))+theme(legend.title = element_text(size = 18))+ theme(axis.text.x = element_text(size = 18))+ theme(axis.text.y = element_text(size = 18))
-#scripts for
+
+#scripts for spieceasi
 metabolites<-data.matrix(round(data[,c(3022,3026,3032,3033,3061,3079,3084,3087,3135,3138,3139,3141,3188,3189,3216,3219,3230,3261,3276,3278,3279,3287)]*100000))
 se.hmp2 <- spiec.easi(metabolites, method='mb', nlambda=1000,
                       lambda.min.ratio=1e-2, pulsar.params = list(thresh = 0.05))
@@ -52,7 +53,6 @@ plot(adj2igraph(getRefit(se.hmp2)), vertex.color=dtype+1, vertex.size=10,vertex.
 write.csv(data.matrix( se.hmp2[["refit"]][["stars"]]),"speci.csv",quote = F)
 
 #scripts for the input of heat maps
-
 result[]<-NA
 t<-names(mydata)
 for (j in 2:72){
@@ -64,7 +64,6 @@ for (j in 2:72){
     rm(su)
   }
 }
-
 data=mydata[,73:94]
 data2<-scale(data)
 df=t(data2)
